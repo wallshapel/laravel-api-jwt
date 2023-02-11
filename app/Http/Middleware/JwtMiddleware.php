@@ -21,7 +21,7 @@
                 if (preg_match('/Bearer\s(\S+)/', $cabeza, $coincidencias)) 
                     $token = $coincidencias[1];
             }
-            if (is_null($token) || empty($token))
+            if ((is_null($token)) || (empty($token)))
                 return response()->json(['error' => 'token requerido', 401]);
             try {
                 $llave = env('JWT_LLAVE');                          
