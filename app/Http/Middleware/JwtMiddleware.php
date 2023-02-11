@@ -15,10 +15,10 @@
          * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
          */
         public function handle(Request $req, Closure $next) {
-            $cabeza = $req->header('Authorization');
+            $cabezales = $req->header('Authorization');
             $token = null;             
-            if (!empty($cabeza)) { // Extraemos el token de la cabecera.
-                if (preg_match('/Bearer\s(\S+)/', $cabeza, $coincidencias)) 
+            if (!empty($cabezales)) { // Extraemos el token de la cabecera.
+                if (preg_match('/Bearer\s(\S+)/', $cabezales, $coincidencias)) 
                     $token = $coincidencias[1];
             }
             if ((is_null($token)) || (empty($token)))
