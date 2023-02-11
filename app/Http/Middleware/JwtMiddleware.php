@@ -5,7 +5,7 @@
     use Illuminate\Http\Request;
     use Firebase\JWT\JWT;
     use Firebase\JWT\Key;
-    use Firebase\JWT\ExpiredException;  // Necesario anteponer el \
+    use Firebase\JWT\ExpiredException;
     class JwtMiddleware {
         /**
          * Handle an incoming request.
