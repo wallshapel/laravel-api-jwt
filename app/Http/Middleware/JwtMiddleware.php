@@ -26,7 +26,6 @@
             try {
                 $llave = env('JWT_LLAVE');                          
                 $decodificado = JWT::decode($token, new Key($llave, 'HS256'));
-                //return response()->json($decodificado); die(); 
                 return $next($req);
             } catch(ExpiredException $e) {
                 return response()->json(['error' => 'token expirado', 401]);
