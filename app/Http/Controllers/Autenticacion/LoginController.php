@@ -13,12 +13,12 @@
                 'password'  => 'required|string'
             ]);
             if (Auth::attempt($credenciales)) {  // Verifica si el usuario y contraseña son correctos contra la DB. compara la contraseña encriptada automáticamente.
-                $token = $this->generarToken(Auth::user()->name, $req->email); 
+                $token = $this->generarToken(Auth::user()->name, $req->email, Auth::user()->rol_id); 
                 return response()->json(['token' => $token], 201);
             } else 
                 return response()->json(['error' => __('auth.failed')], 400);    
         }
-        private function generarToken($nombre, $email) {
+        private function generarToken($nombre, $email, $rol_id) {
             $llave = env('JWT_LLAVE');
             $tiempo = time();
             $payload = [
@@ -27,7 +27,8 @@
                 'exp'   => $tiempo + 30,
                 'data'  => [
                     'name'  => $nombre,
-                    'email' => $email
+                    'email' => $email,
+                    'rol_id'=> $rol_id
                 ]
             ];
             $token = JWT::encode($payload, $llave, 'HS256');

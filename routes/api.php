@@ -4,5 +4,6 @@
     use App\Http\Controllers\Autenticacion\LoginController;
     use App\Http\Controllers\API\ClienteController;
     Route::post('login', [LoginController::class, 'index']);
-    Route::get('clientes', [ClienteController::class, 'index'])->middleware('jwt');
+    Route::get('clientes', [ClienteController::class, 'index']);
+    Route::get('cliente/{id?}', [ClienteController::class, 'editar']);
 ?>
