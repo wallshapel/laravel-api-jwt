@@ -14,7 +14,7 @@
             ]);
             if (Auth::attempt($credenciales)) {  // Verifica si el usuario y contraseña son correctos contra la DB. compara la contraseña encriptada automáticamente.
                 $token = $this->generarToken(Auth::user()->name, $req->email, Auth::user()->rol_id); 
-                return response()->json(['token' => $token], 201);
+                return response()->json(['Token' => $token], 201);
             } else 
                 return response()->json(['error' => __('auth.failed')], 400);    
         }
